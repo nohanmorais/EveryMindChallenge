@@ -1,0 +1,103 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Everymind Signin Documentation",
+        "description": "This api may allow the user signup and signin on the application",
+        "version": "1.0.0",
+        "contact": {
+            "email": "nohanmorais@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "summary": "Create User",
+                "description": "SignUp a new User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "adress": {
+                                        "type": "string"
+                                    },
+                                    "birthday": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Fulano de tal",
+                                    "cpf": "12345678900",
+                                    "adress": "Rua Tal, 101",
+                                    "birthday": "01/01/1900",
+                                    "email": "fulanodetal@provedor.com.br",
+                                    "password": "123456"
+                                }
+    
+                            }
+                        }
+                    }
+                },
+
+                "responses": {
+                    "201": {
+                        "description": "User created with success"
+                    },
+                    "400": {
+                        "description": "User or email already exists"
+                    }
+                }
+            }
+        },
+        "/sessions": {
+            "post": {
+                "summary": "LogIn in the system",
+                "description": "Verify if the user is registered in the system",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "email": "fulanodetal@provedor.com.br",
+                                    "password": "123456"
+                                }
+    
+                            }
+                        }
+                    }
+                },
+
+                "responses": {
+                    "201": {
+                        "description": "You are authorizated to enter in the system"
+                    },
+                    "400": {
+                        "description": "Email/Password is incorrect"
+                    }
+                }
+            }
+        }
+    }
+}
